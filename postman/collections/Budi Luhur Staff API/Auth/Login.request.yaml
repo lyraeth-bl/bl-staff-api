@@ -1,14 +1,15 @@
 $kind: http-request
-name: Login
 method: POST
-url: '{{base_url}}/api/v1/auth/login'
+url: "{{base_url}}/api/v1/auth/login"
+examples: .resources/Login.resources/examples
 order: 1000
-description: 'Authenticates a user with email and password. Returns access_token, refresh_token, token_type (Bearer), expires_in, and user info (id, name, email).'
+description: Authenticates a user with email and password. Returns access_token,
+  refresh_token, token_type (Bearer), expires_in, and user info (id, name,
+  email).
 auth:
   type: noauth
 headers:
-  - key: Content-Type
-    value: application/json
+  Content-Type: application/json
 body:
   type: json
   content: |-

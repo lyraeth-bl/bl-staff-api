@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use Carbon\CarbonInterval;
 use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\RateLimiter;
@@ -23,10 +24,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        Passport::enablePasswordGrant();
-
-        Passport::tokensExpireIn(now()->addMinutes(15));
-        Passport::refreshTokensExpireIn(now()->addDays(30));
+        Passport::tokensExpireIn(CarbonInterval::minutes(15));
+        Passport::personalAccessTokensExpireIn(CarbonInterval::minutes(15));
 
         RateLimiter::for('api-login', function (Request $request) {
             return Limit::perMinute(5)->by($request->ip());

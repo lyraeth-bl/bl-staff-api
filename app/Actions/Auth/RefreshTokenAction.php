@@ -2,31 +2,40 @@
 
 namespace App\Actions\Auth;
 
+use App\Models\UserRefreshToken;
 use Illuminate\Auth\AuthenticationException;
-use Illuminate\Support\Facades\Http;
+use Pest\Support\Str;
 
 class RefreshTokenAction
 {
     public function execute(string $refreshToken): array
     {
-        $response = Http::timeout(10)
-            ->asForm()
-            ->post(config('app.url').'/oauth/token', [
-                'grant_type' => 'refresh_token',
-                'refresh_token' => $refreshToken,
-                'client_id' => config('services.passport.password_client_id'),
-                'client_secret' => config('services.passport.password_client_secret'),
-                'scope' => '',
-            ]);
+        $token = UserRefreshToken::where('token', $refreshToken)
+            ->with('user')
+            ->first();
 
-        if ($response->failed()) {
+        if (! $token || $token->isExpired()) {
             throw new AuthenticationException('Invalid or expired refresh token.');
         }
 
+        $user = $token->user;
+
+        // Revoke semua access token lama
+        $user->tokens()->each(fn ($t) => $t->revoke());
+
+        // Rotate refresh token
+        $token->delete();
+
+        $newRefreshToken = UserRefreshToken::create([
+            'user_id' => $user->id,
+            'token' => Str::random(64),
+            'expires_at' => now()->addDays(30),
+        ]);
+
         return [
-            'access_token' => $response->json('access_token'),
-            'refresh_token' => $response->json('refresh_token'),
-            'expires_in' => $response->json('expires_in'),
+            'access_token' => $user->createToken('mobile-app')->accessToken,
+            'refresh_token' => $newRefreshToken->token,
+            'expires_in' => now()->addMinutes(15)->timestamp,
         ];
     }
 }

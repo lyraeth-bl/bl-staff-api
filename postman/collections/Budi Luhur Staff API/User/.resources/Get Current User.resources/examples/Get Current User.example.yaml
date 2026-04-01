@@ -1,0 +1,21 @@
+$kind: http-example
+description: Returns the currently authenticated user (id, name, email).
+request:
+  url: "{{base_url}}/api/user"
+  method: GET
+response:
+  statusCode: 200
+  statusText: OK
+  headers:
+    host: localhost:8000
+    connection: close
+    x-powered-by: PHP/8.3.6
+    cache-control: no-cache, private
+    date: Wed, 01 Apr 2026 07:33:31 GMT
+    content-type: application/json
+    access-control-allow-origin: "*"
+  body:
+    type: json
+    content: '{"id":1,"name":"Nayanika Almahyra
+      Mishall","email":"nayanika@budiluhur.sch.id","email_verified_at":null,"created_at":"2026-04-01T07:29:02.000000Z","updated_at":"2026-04-01T07:29:02.000000Z"}'
+order: 1775028813668

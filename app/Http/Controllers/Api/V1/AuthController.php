@@ -7,10 +7,9 @@ use App\Actions\Auth\RefreshTokenAction;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\LoginRequest;
 use App\Http\Requests\Auth\RefreshTokenRequest;
-use App\Http\Resources\UserResource;
 use Illuminate\Auth\AuthenticationException;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use Symfony\Component\HttpFoundation\JsonResponse;
 
 class AuthController extends Controller
 {
@@ -35,7 +34,6 @@ class AuthController extends Controller
         return response()->json([
             'message' => 'Login successful.',
             'data' => [
-                'user' => new UserResource($result['user']),
                 'access_token' => $result['access_token'],
                 'refresh_token' => $result['refresh_token'],
                 'token_type' => 'Bearer',
@@ -70,6 +68,9 @@ class AuthController extends Controller
     public function logout(Request $request): JsonResponse
     {
         $request->user()->token()->revoke();
+
+        // Hapus semua refresh token user
+        $request->user()->refreshTokens()->delete();
 
         return response()->json([
             'message' => 'Logout successful.',

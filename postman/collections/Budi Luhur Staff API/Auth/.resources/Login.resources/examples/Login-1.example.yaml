@@ -1,0 +1,35 @@
+$kind: http-example
+name: Login
+description: Authenticates a user with email and password. Returns access_token,
+  refresh_token, token_type (Bearer), expires_in, and user info (id, name,
+  email).
+request:
+  url: "{{base_url}}/api/v1/auth/login"
+  method: POST
+  headers:
+    Content-Type: application/json
+  body:
+    type: json
+    content: |-
+      {
+        "email": "{{email}}",
+        "password": "{{password}}"
+      }
+response:
+  statusCode: 200
+  statusText: OK
+  headers:
+    host: localhost:8000
+    connection: close
+    x-powered-by: PHP/8.3.6
+    cache-control: no-cache, private
+    date: Wed, 01 Apr 2026 07:30:36 GMT
+    content-type: application/json
+    x-ratelimit-limit: "5"
+    x-ratelimit-remaining: "3"
+    access-control-allow-origin: "*"
+  body:
+    type: json
+    content: '{"message":"Login
+      successful.","data":{"access_token":"eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIwMTlkNDdmMy03Zjc4LTcyNGEtODYxNC02MTYyN2UxZTlhZDgiLCJqdGkiOiJhYWViYmM4ZGFkYWNkZmU5ZTE0MmY0OWM4NDAyZGYzZWYyMGRhZTI5N2ViZDRkZDY0MzhmMzZiOWVjMGJlNjNmYmJlZjA3NDg5YmU2OGVhNiIsImlhdCI6MTc3NTAyODYzNi4zMjYwMzcsIm5iZiI6MTc3NTAyODYzNi4zMjYwNDEsImV4cCI6MTc3NTAyOTUzNi4zMTIwOTgsInN1YiI6IjEiLCJzY29wZXMiOltdfQ.SpbG1rzQNnVvqDQlz05hDZAGtoXPQip7nZ01VH4AFbURVFAgygWS0mGhFwvjX922Z8vK0n8KZZ_nxnJfaZ9JoB8icRPaFWsOJS-rywDMZCDzVJFWpZN7Sx9rSVnVSh1I5RyThGhqC_G6EQh19kGaxllkdbTFL91LLn8x128gUqMidT0K7gF5dcsSoRMEJjn1d9UjVSiAY59ms5KovdYV7QVJ7tCX8A_Voz8jFvZZ8jByTUaLdkLPWz6MGBUC_UWVMxNo7sQnDH1UfIo8kSJESQUvSFyCscppOmNtiPu0EvHGfaAoXwfVzwxSznBAZMF040PnXVqK76C1KMJ8YDr34zQ57fFDP1P1OHRT41UPpvwLLltV0foXXWb3MsRFLP6erHl9PVN4c9US_hrW76TYe_HeU1fP79DwFzeIrB_NOyIA_ScumX5N71mM_4BqGPyH71wS-Osm7T2ouJaCnD4Af0OhQzEpEYqtvuTpLinGeTSr3-fX4SQ7QhBda6BOqEvTOM_aRqIYF8EaLiuBHC3XpkFZp1JGjxxpFQrUJOeKPoNPB_Q2Bckm2hULlsVkqomVHkLTy7pRHfCD00RZcZgFkBfPiNF9d1QeTpjscGdZdborLAZag33rMKAVEKRD1H0pBMlTNQI2SK_eZfY5Eomy5rSK5FddIcm1DeM-LUcFTZw","refresh_token":"EzbwkVOi5TWhG5xYD6e3gal09GS5KEe526RnY8LvmRH78FtFoFSe7iHQbWG8t8fS","token_type":"Bearer","expires_in":1775029536}}'
+order: 4383289943480501

@@ -1,0 +1,20 @@
+$kind: http-example
+description: Revokes the current user's access token. Requires Bearer token authentication.
+request:
+  url: "{{base_url}}/api/v1/auth/logout"
+  method: POST
+response:
+  statusCode: 200
+  statusText: OK
+  headers:
+    host: localhost:8000
+    connection: close
+    x-powered-by: PHP/8.3.6
+    cache-control: no-cache, private
+    date: Wed, 01 Apr 2026 07:33:41 GMT
+    content-type: application/json
+    access-control-allow-origin: "*"
+  body:
+    type: json
+    content: '{"message":"Logout successful."}'
+order: 1775028823118

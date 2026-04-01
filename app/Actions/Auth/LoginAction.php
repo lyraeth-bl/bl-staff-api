@@ -3,9 +3,10 @@
 namespace App\Actions\Auth;
 
 use App\Models\User;
+use App\Models\UserRefreshToken;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Str;
 
 class LoginAction
 {
@@ -20,26 +21,18 @@ class LoginAction
             throw new AuthenticationException('The provided credentials are incorrect.');
         }
 
-        $response = Http::timeout(10)
-            ->asForm()
-            ->post(config('app.url').'/oauth/token', [
-                'grant_type' => 'password',
-                'client_id' => config('services.passport.password_client_id'),
-                'client_secret' => config('services.passport.password_client_secret'),
-                'username' => $email,
-                'password' => $password,
-                'scope' => '',
-            ]);
+        $accessToken = $user->createToken('mobile-app')->accessToken;
 
-        if ($response->failed()) {
-            throw new AuthenticationException('Failed to issue token.');
-        }
+        $refreshToken = UserRefreshToken::create([
+            'user_id' => $user->id,
+            'token' => Str::random(64),
+            'expires_at' => now()->addDays(30),
+        ]);
 
         return [
-            'user' => $user,
-            'access_token' => $response->json('access_token'),
-            'refresh_token' => $response->json('refresh_token'),
-            'expires_in' => $response->json('expires_in'),
+            'access_token' => $accessToken,
+            'refresh_token' => $refreshToken->token,
+            'expires_in' => now()->addMinutes(15)->timestamp,
         ];
     }
 }

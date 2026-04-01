@@ -1,0 +1,14 @@
+$kind: http-request
+url: "{{base_url}}/api/v1/register"
+method: POST
+body:
+  type: json
+  content: |-
+    {
+        "name": "Nayanika Almahyra Mishall",
+        "email": "nayanika@budiluhur.sch.id",
+        "password": "nayanika123",
+        "password_confirmation": "nayanika123"
+    }
+examples: .resources/Register.resources/examples
+order: 1775025295410

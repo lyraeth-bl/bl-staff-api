@@ -1,0 +1,13 @@
+$kind: http-request
+name: Get Current User
+method: GET
+url: "{{base_url}}/api/user"
+headers:
+  Accept: application/json
+examples: .resources/Get Current User.resources/examples
+order: 1357359994600920
+description: Returns the currently authenticated user (id, name, email).
+auth:
+  type: bearer
+  credentials:
+    token: "{{access_token}}"

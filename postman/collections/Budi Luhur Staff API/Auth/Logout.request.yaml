@@ -1,11 +1,10 @@
 $kind: http-request
-name: Logout
 method: POST
-url: '{{base_url}}/api/v1/auth/logout'
+url: "{{base_url}}/api/v1/auth/logout"
+examples: .resources/Logout.resources/examples
 order: 3000
-description: 'Revokes the current user''s access token. Requires Bearer token authentication.'
+description: Revokes the current user's access token. Requires Bearer token authentication.
 auth:
   type: bearer
   credentials:
-    - key: token
-      value: '{{access_token}}'
+    token: "{{access_token}}"

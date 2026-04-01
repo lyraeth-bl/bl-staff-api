@@ -1,0 +1,33 @@
+$kind: http-example
+description: Exchanges a refresh_token for a new access_token and refresh_token
+  pair. Returns access_token, refresh_token, token_type (Bearer), and
+  expires_in.
+request:
+  url: "{{base_url}}/api/v1/auth/refresh"
+  method: POST
+  headers:
+    Content-Type: application/json
+  body:
+    type: json
+    content: |-
+      {
+        "refresh_token": "{{refresh_token}}"
+      }
+response:
+  statusCode: 200
+  statusText: OK
+  headers:
+    host: localhost:8000
+    connection: close
+    x-powered-by: PHP/8.3.6
+    cache-control: no-cache, private
+    date: Wed, 01 Apr 2026 07:32:35 GMT
+    content-type: application/json
+    x-ratelimit-limit: "5"
+    x-ratelimit-remaining: "4"
+    access-control-allow-origin: "*"
+  body:
+    type: json
+    content: '{"message":"Token refreshed
+      successfully.","data":{"access_token":"eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIwMTlkNDdmMy03Zjc4LTcyNGEtODYxNC02MTYyN2UxZTlhZDgiLCJqdGkiOiI2M2QyNGY4M2Q5Y2FiNDE1YTE1MjUzODQxMTJiZmU4YWFkNDM3NTJiNWE1YzNiOTNjYTk0MWU2MGZlMTMyZTgwNWUwZjlmY2VhNGE2YmNiMiIsImlhdCI6MTc3NTAyODc1NS4yNDg1NjEsIm5iZiI6MTc3NTAyODc1NS4yNDg1NjMsImV4cCI6MTc3NTAyOTY1NS4yNDAwNDIsInN1YiI6IjEiLCJzY29wZXMiOltdfQ.MzqQEpYCtI6FgwMinzUzk909P_Ynsue5jzLnNHCApDVSlbQBmrsF8agq46r1jkP42uu8gpZR8bDbzLwJ8JNiz4HEZydP9QnbG3mOBzdpqM9Ypc5C0jXt-asYa0UQ8Es4bvNAYZJ8Lhs8FduPAdSLTML-2yHnz7QY1krOQ926spLme4vkwHINCxe7JTZMWGiupzTjIwjtyxSrcDe49JDavqpazJzUoxNiCVU0fgFgGNzPSqvnBEn-w6lTNxunR18n11e1vqlzovVAQJL30v8Dw-yhzidpuXjSTW7Snl_NaYV-JXWeIzrkTYLwMhgmMu6f7AEhHTOGjiDkfwuwTG4c_SgqPYNaWu5t2--HFrZdsrxY-ca1cFbF0CEUW4ObeeBKa62TUbtOuAWFxdJbfxI5ZgiJd40f-l7Lem5fRvm4HuOznQralsMj7CGmwl2lT35E5-JC2_7d4z-9bli6tTlmsGgT8WZhKRRjY8VErxo2jayU6qAwQMF7vFcKAENml7xKca3SamMWhJiS8GqdZ2GBbWmUFsTiPnEP1eCAPDMDKlpudQ7vyT4HC84vzknuyGjB4p3ctxByyZI9ih2bQvfimgyc6KHL3jBgEYL-1u9jZIz96WmXZ_F3sbAL739IjHz6vqTHqXu9IcBvjL2PATFbjQnPsDu6SvgKAEn1W8J5Ly8","refresh_token":"pPpekyaKfEpZQOj7RIzQm1xug2b5Il5titn45NaubduMd0aa6hlC3GYVA4HY8JAv","token_type":"Bearer","expires_in":1775029655}}'
+order: 1775028771809
