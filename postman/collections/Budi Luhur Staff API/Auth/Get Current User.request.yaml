@@ -2,9 +2,10 @@ $kind: http-request
 name: Get Current User
 method: GET
 url: '{{base_url}}/api/user'
-order: 3000
+order: 4000
+description: 'Returns the currently authenticated user (id, name, email).'
 auth:
   type: bearer
   credentials:
     - key: token
-      value: '{{token}}'
+      value: '{{access_token}}'

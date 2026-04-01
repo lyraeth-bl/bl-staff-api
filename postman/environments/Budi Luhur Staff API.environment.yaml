@@ -4,7 +4,19 @@ values:
     value: 'http://localhost:8000'
     enabled: true
     type: default
-  - key: token
+  - key: email
+    value: ''
+    enabled: true
+    type: default
+  - key: password
+    value: ''
+    enabled: true
+    type: secret
+  - key: access_token
+    value: ''
+    enabled: true
+    type: secret
+  - key: refresh_token
     value: ''
     enabled: true
     type: secret
