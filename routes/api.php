@@ -14,6 +14,10 @@ Route::prefix('v1')->name('api.v1.')->group(function () {
             ->name('login')
             ->middleware('throttle:api-login');
 
+        Route::post('refresh', [AuthController::class, 'refresh'])
+            ->name('refresh')
+            ->middleware('throttle:api-login');
+
         Route::middleware('auth:api')->group(function () {
             Route::post('logout', [AuthController::class, 'logout'])->name('logout');
         });

@@ -2,41 +2,28 @@
 
 namespace App\Actions\Auth;
 
-use App\Models\User;
 use Illuminate\Auth\AuthenticationException;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Http;
 
-class LoginAction
+class RefreshTokenAction
 {
-    /**
-     * Create a new class instance.
-     */
-    public function execute(string $email, string $password): array
+    public function execute(string $refreshToken): array
     {
-        $user = User::where('email', $email)->first();
-
-        if (! $user || ! Hash::check($password, $user->password)) {
-            throw new AuthenticationException('The provided credentials are incorrect.');
-        }
-
         $response = Http::timeout(10)
             ->asForm()
             ->post(config('app.url').'/oauth/token', [
-                'grant_type' => 'password',
+                'grant_type' => 'refresh_token',
+                'refresh_token' => $refreshToken,
                 'client_id' => config('services.passport.password_client_id'),
                 'client_secret' => config('services.passport.password_client_secret'),
-                'username' => $email,
-                'password' => $password,
                 'scope' => '',
             ]);
 
         if ($response->failed()) {
-            throw new AuthenticationException('Failed to issue token.');
+            throw new AuthenticationException('Invalid or expired refresh token.');
         }
 
         return [
-            'user' => $user,
             'access_token' => $response->json('access_token'),
             'refresh_token' => $response->json('refresh_token'),
             'expires_in' => $response->json('expires_in'),

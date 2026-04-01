@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Api\V1;
 
 use App\Actions\Auth\LoginAction;
+use App\Actions\Auth\RefreshTokenAction;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\LoginRequest;
+use App\Http\Requests\Auth\RefreshTokenRequest;
 use App\Http\Resources\UserResource;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Http\Request;
@@ -12,7 +14,10 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 
 class AuthController extends Controller
 {
-    public function __construct(private LoginAction $loginAction) {}
+    public function __construct(
+        private LoginAction $loginAction,
+        private RefreshTokenAction $refreshTokenAction,
+    ) {}
 
     public function login(LoginRequest $request): JsonResponse
     {
@@ -31,8 +36,33 @@ class AuthController extends Controller
             'message' => 'Login successful.',
             'data' => [
                 'user' => new UserResource($result['user']),
-                'token' => $result['token'],
+                'access_token' => $result['access_token'],
+                'refresh_token' => $result['refresh_token'],
                 'token_type' => 'Bearer',
+                'expires_in' => $result['expires_in'],
+            ],
+        ]);
+    }
+
+    public function refresh(RefreshTokenRequest $request): JsonResponse
+    {
+        try {
+            $result = $this->refreshTokenAction->execute(
+                $request->validated('refresh_token'),
+            );
+        } catch (AuthenticationException) {
+            return response()->json([
+                'message' => 'Invalid or expired refresh token.',
+            ], 401);
+        }
+
+        return response()->json([
+            'message' => 'Token refreshed successfully.',
+            'data' => [
+                'access_token' => $result['access_token'],
+                'refresh_token' => $result['refresh_token'],
+                'token_type' => 'Bearer',
+                'expires_in' => $result['expires_in'],
             ],
         ]);
     }
