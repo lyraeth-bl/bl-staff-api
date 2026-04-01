@@ -11,7 +11,7 @@ class LoginAction
     /**
      * Create a new class instance.
      */
-    public function execute(string $email, string $password): string
+    public function execute(string $email, string $password): array
     {
         $user = User::where('email', $email)->first();
 
@@ -19,6 +19,9 @@ class LoginAction
             throw new AuthenticationException('The provided credentials are incorrect.');
         }
 
-        return $user->createToken('mobile-app')->accessToken;
+        return [
+            'user' => $user,
+            'token' => $user->createToken('mobile-app')->accessToken,
+        ];
     }
 }
