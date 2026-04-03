@@ -1,0 +1,14 @@
+$kind: http-request
+name: Change Name
+url: "{{base_url}}/api/v1/profile/name"
+method: PATCH
+headers:
+  Accept: application/json
+  Content-Type: application/json
+body:
+  type: json
+  content: |-
+    {
+        "name": "Nayanika"
+    }
+order: 73277167571173

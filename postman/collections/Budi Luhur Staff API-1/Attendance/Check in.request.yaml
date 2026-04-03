@@ -1,0 +1,8 @@
+$kind: http-request
+name: Check in
+url: "{{base_url}}/api/v1/attendance/check-in"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+order: 592619125407497

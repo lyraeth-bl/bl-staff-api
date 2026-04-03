@@ -1,0 +1,8 @@
+$kind: http-request
+name: Monthly Attendance
+url: "{{base_url}}/api/v1/attendance/monthly"
+method: GET
+headers:
+  Accept: application/json
+  Content-Type: application/json
+order: 1775203972238

@@ -1,0 +1,29 @@
+$kind: http-request
+method: POST
+url: "{{base_url}}/api/v1/auth/register"
+description: >-
+  Register a new staff account.
+
+
+  **Validation rules:**
+
+  - `name`: required, string, max 50 characters
+
+  - `email`: required, valid email, max 500 characters, must be unique, must end
+  with `budiluhur.sch.id`
+
+  - `password`: required, string, min 8 characters, must be confirmed
+
+  - `password_confirmation`: required, must match `password`
+headers:
+  Accept: application/json
+  Content-Type: application/json
+body:
+  type: json
+  content: |-
+    {
+      "name": "Nayanika Almahyra Mishall",
+      "email": "nayanika@budiluhur.sch.id",
+      "password": "nayanika123",
+      "password_confirmation": "nayanika123"
+    }
