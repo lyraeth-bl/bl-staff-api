@@ -6,7 +6,7 @@ headers:
   Accept: application/json
   Content-Type: application/json
 auth:
+  type: inherit
   credentials:
-    token: 3|mqsKval8C84ShuZMyTJSKoUBw7krqd0lRYGfOvw122001b61
-  type: bearer
+    id: 67d09a5a-e0cd-44bd-b4be-bd2871f3ad25
 order: 1775189540001

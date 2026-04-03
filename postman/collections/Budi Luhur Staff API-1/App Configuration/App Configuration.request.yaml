@@ -1,0 +1,5 @@
+$kind: http-request
+name: App Configuration
+url: "{{base_url}}/api/v1/app-config"
+method: GET
+order: 1775196402922

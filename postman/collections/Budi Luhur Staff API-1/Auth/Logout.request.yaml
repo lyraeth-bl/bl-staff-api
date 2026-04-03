@@ -6,9 +6,5 @@ method: POST
 headers:
   Accept: application/json
   Content-Type: application/json
-auth:
-  type: bearer
-  credentials:
-    token: 2|zxDCHBHJs4wx6OFePFKJLtNQfPjWHPVTeYY5wCQz7b93ce35
 examples: .resources/Logout.resources/examples
 order: 4070152851466159

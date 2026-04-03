@@ -11,8 +11,4 @@ body:
     {
         "name": "Nayanika"
     }
-auth:
-  type: bearer
-  credentials:
-    token: 2|zxDCHBHJs4wx6OFePFKJLtNQfPjWHPVTeYY5wCQz7b93ce35
 order: 73277167571173

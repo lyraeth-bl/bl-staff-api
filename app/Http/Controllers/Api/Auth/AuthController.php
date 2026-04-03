@@ -41,7 +41,7 @@ class AuthController extends Controller
         }
 
         // Masa habis access_token.
-        $expiresAt = Carbon::now()->addDays(1);
+        $expiresAt = Carbon::now()->addDays(7);
 
         // Generate access_token.
         $accessToken = $user->createToken($request->device_name, ['*'], $expiresAt)->plainTextToken;
