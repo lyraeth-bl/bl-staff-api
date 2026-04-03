@@ -1,0 +1,14 @@
+$kind: http-request
+name: Logout
+description: Logout staff sessions.
+url: "{{base_url}}/api/v1/auth/logout"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+auth:
+  type: bearer
+  credentials:
+    token: 1|poZsRr4YplWmisAHUNI2FT3MBHDC6MHZYjkpbWpj2ba5f08b
+examples: .resources/Logout.resources/examples
+order: 4070152851466159
