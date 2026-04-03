@@ -19,6 +19,8 @@ Route::prefix('v1')->group(function () {
 
         Route::prefix('profile')->group(function () {
             Route::get('me', [ProfileController::class, 'me']);
+            Route::patch('name', [ProfileController::class, 'changeName']);
+            Route::patch('password', [ProfileController::class, 'changePassword']);
         });
     });
 });

@@ -1,4 +1,5 @@
 $kind: http-request
+name: Login
 description: |-
   Login staff account.
 
@@ -19,7 +20,7 @@ body:
   content: |-
     {
       "email": "nayanika@budiluhur.sch.id",
-      "password": "nayanika123",
+      "password": "nayanika123456",
       "device_name": "iPhone 15"
     }
 order: 470976988971007

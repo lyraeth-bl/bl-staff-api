@@ -7,6 +7,6 @@ headers:
   Content-Type: application/json
 auth:
   credentials:
-    token: 2|zxDCHBHJs4wx6OFePFKJLtNQfPjWHPVTeYY5wCQz7b93ce35
+    token: 3|mqsKval8C84ShuZMyTJSKoUBw7krqd0lRYGfOvw122001b61
   type: bearer
 order: 1775189540001
