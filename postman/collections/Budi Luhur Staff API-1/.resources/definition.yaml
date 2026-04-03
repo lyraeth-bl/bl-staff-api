@@ -1,0 +1,4 @@
+$kind: collection
+name: Budi Luhur Staff API
+description: API collection for Budi Luhur Staff API - a Laravel application using Sanctum authentication.
+version: '1.0.0'
