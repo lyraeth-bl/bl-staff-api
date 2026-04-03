@@ -1,0 +1,10 @@
+$kind: http-request
+name: Check out
+url: "{{base_url}}/api/v1/attendance/check-out"
+method: POST
+headers:
+  - key: Accept
+    value: application/json
+  - key: Content-Type
+    value: application/json
+order: 2927739467898371
