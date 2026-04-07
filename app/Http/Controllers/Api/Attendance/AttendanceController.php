@@ -88,7 +88,7 @@ class AttendanceController extends Controller
                 'user_id'   => $user->id,
                 'date'      => today(),
                 'check_out' => Carbon::now(),
-                'status'    => 'lupa_checkin',
+                'status'    => 'lupaCheckin',
             ]);
 
             return response()->json([

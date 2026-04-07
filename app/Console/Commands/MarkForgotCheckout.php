@@ -21,8 +21,8 @@ class MarkForgotCheckout extends Command
             ->whereNotNull('check_in')
             // Tapi belum checkOut
             ->whereNull('check_out')
-            ->update(['status' => 'lupa_checkout']);
+            ->update(['status' => 'lupaCheckout']);
 
-        $this->info("Marked {$updated} attendance(s) as lupa_checkout.");
+        $this->info("Marked {$updated} attendance(s) as lupaCheckout.");
     }
 }
