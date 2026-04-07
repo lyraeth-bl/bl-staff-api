@@ -12,7 +12,7 @@ use Illuminate\Http\Request;
 
 class AttendanceController extends Controller
 {
-    public function getMonthlyAttedance(MonthlyAttendanceRequest $request): JsonResponse
+    public function getMonthlyAttendance(MonthlyAttendanceRequest $request): JsonResponse
     {
         // Ambil data absensi berdasarkan request user.
         $monthlyAttendance = Attendance::where('user_id', $request->user()->id)
@@ -26,6 +26,27 @@ class AttendanceController extends Controller
             'error'   => false,
             'message' => 'Get monthly attendance successfully.',
             'data'    => AttendanceResource::collection($monthlyAttendance),
+        ]);
+    }
+
+    public function getTodayAttendance(Request $request): JsonResponse
+    {
+        $todayAttendance = Attendance::where('user_id', $request->user()->id)
+            ->where('date', today())
+            ->first();
+
+        if (! $todayAttendance) {
+            return response()->json([
+                'error'   => false,
+                'message' => "There's no attendance today.",
+                'data'    => null,
+            ]);
+        }
+
+        return response()->json([
+            'error' => false,
+            'message' => "Get today attendance successfully.",
+            'data' => new AttendanceResource($todayAttendance),
         ]);
     }
 
