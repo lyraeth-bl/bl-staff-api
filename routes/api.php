@@ -28,7 +28,8 @@ Route::prefix('v1')->group(function () {
         });
 
         Route::prefix('attendance')->group(function () {
-            Route::get('monthly', [AttendanceController::class, 'getMonthlyAttedance']);
+            Route::get('monthly', [AttendanceController::class, 'getMonthlyAttendance']);
+            Route::get('today', [AttendanceController::class, 'getTodayAttendance']);
             Route::post('check-in', [AttendanceController::class, 'checkIn']);
             Route::post('check-out', [AttendanceController::class, 'checkOut']);
         });

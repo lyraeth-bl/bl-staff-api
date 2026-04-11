@@ -8,4 +8,4 @@ auth:
     type: bearer
     name: Bearer Token
     credentials:
-      token: 1|FBAj2cWKHYYww2XsS3sskgGgpMs7CMCncb4Brbd22d56b9c8
+      token: 4|KPwOsSWZuTtDcot4JDedCyQ3FfzRkRC7aqNgehhb5d4fb73b
