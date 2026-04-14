@@ -3,9 +3,12 @@ name: Budi Luhur Staff API
 description: API collection for Budi Luhur Staff API - a Laravel application
   using Sanctum authentication.
 version: '1.0.0'
+variables:
+  local_url: ""
+  prod_url: ""
 auth:
   - id: 67d09a5a-e0cd-44bd-b4be-bd2871f3ad25
     type: bearer
     name: Bearer Token
     credentials:
-      token: 4|KPwOsSWZuTtDcot4JDedCyQ3FfzRkRC7aqNgehhb5d4fb73b
+      token: 10|gLtH0ABkcz39PEgEao9fgv1f6VlHwPTLBCR5uJABad68b3ae
