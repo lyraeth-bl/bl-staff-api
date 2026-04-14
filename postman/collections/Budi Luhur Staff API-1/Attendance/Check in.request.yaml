@@ -1,6 +1,6 @@
 $kind: http-request
 name: Check in
-url: "{{base_url}}/api/v1/attendance/check-in"
+url: "{{local_url}}/api/v1/attendance/check-in"
 method: POST
 headers:
   Accept: application/json

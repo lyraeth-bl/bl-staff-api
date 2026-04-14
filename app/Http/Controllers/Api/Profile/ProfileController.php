@@ -19,7 +19,7 @@ class ProfileController extends Controller
         return response()->json([
             'error' => false,
             'message' => 'User retrieved successfully',
-            'user' => new UserResource($request->user())
+            'user' => new UserResource($request->user()->load('userDetail'))
         ]);
     }
 

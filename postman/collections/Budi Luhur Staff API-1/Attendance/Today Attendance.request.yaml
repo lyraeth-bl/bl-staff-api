@@ -1,6 +1,6 @@
 $kind: http-request
 name: Today Attendance
-url: "{{base_url}}/api/v1/attendance/today"
+url: "{{local_url}}/api/v1/attendance/today"
 method: GET
 headers:
   Accept: application/json
