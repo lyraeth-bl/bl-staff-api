@@ -15,7 +15,9 @@ class UserWorkDetailResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            'unit' => $this->userWorkDetail->unit->name . ' - ' . $this->userWorkDetail->unit->location,
+            'unit' => $this->unit?->name . ' - ' . $this->unit?->location,
+            'position' => $this->position?->name,
+            'leader' => $this->leader?->name,
         ];
     }
 }

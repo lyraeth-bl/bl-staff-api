@@ -15,11 +15,20 @@ class ProfileController extends Controller
 {
     public function me(Request $request): JsonResponse
     {
+
+        $user = $request->user()->load([
+            'userDetail',
+            'userWorkDetail.unit',
+            'userWorkDetail.position',
+            'userWorkDetail.leader',
+        ]);
+
+
         // Return response.
         return response()->json([
             'error' => false,
             'message' => 'User retrieved successfully',
-            'user' => new UserResource($request->user()->load('userDetail'))
+            'user' => new UserResource($user)
         ]);
     }
 

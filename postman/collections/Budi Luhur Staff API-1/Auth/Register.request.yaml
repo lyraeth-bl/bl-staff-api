@@ -23,8 +23,8 @@ body:
   type: json
   content: |-
     {
-      "name": "Arunika Zia Aksara",
-      "email": "arunika@budiluhur.sch.id",
-      "password": "arunika123",
-      "password_confirmation": "arunika123"
+      "name": "{{name}}",
+      "email": "{{email}}",
+      "password": "{{password}}",
+      "password_confirmation": "{{password_confirmation}}"
     }
